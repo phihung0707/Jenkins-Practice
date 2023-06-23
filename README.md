@@ -46,17 +46,17 @@ Folder Structure
 		- kubeconig with Kind Secret file (ID name: config)
 	- manage Jenkins -> System
    		- GitHub Enterprise Servers
-       			- API endpoint: https://api.github.com
-       			- Name: devops
-       		- Global Pipeline Libraries
-           		- Name: devops-jenkins-ci
-               		- Default version: jenkins
-                   	- [x] Allow default version to be overridden
-                   	- [x] Include @Library changes in job recent changes 
-                 - Retrieval method: Modern SCM
-                   	- Source Code Management: Git
-                   	  	- Project Repository: https://github.com/nashtech-garage/devops-ci-cd.git
-                   	  	- Credentials: github
+			- API endpoint: https://api.github.com
+			- Name: devops
+		- Global Pipeline Libraries
+			- Name: devops-jenkins-ci
+			- Default version: jenkins
+			- [x] Allow default version to be overridden
+			- [x] Include @Library changes in job recent changes 
+		- Retrieval method: Modern SCM
+			- Source Code Management: Git
+				- Project Repository: https://github.com/nashtech-garage/devops-ci-cd.git
+				- Credentials: github
 - SonarQube Server
   	- Generate Tokens
   	- Create Webhook: Administration -> Configuration -> Webhooks -> Create
