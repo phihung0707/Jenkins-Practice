@@ -23,7 +23,7 @@ void call() {
 
     stage ("Build Solution") {
         sh """
-            docker build --build-arg file_name="${name}" -t "${tag}"  .
+            docker build --pull --rm -f "${publishProject}" --build-arg file_name="${name}" -t "${tag}"  .
         """
     }
 }
