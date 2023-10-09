@@ -2,7 +2,7 @@
 void call() {
     String name = "bookstore"
     String runtime = "BookStore.API.dll"
-    String publishProject = "src/BookStore.API/BookStore.API.csproj"
+    String publishProject = "src/backend"
     String baseImage     = "mcr.microsoft.com/dotnet/sdk"
     String baseTag       = "6.0"
     String demoRegistry = "demotraining.azurecr.io"
