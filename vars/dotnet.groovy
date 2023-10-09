@@ -1,8 +1,9 @@
 #!/usr/bin/env groovy
 void call() {
     String name = "bookstore"
+    String tag = "backend"
     String runtime = "BookStore.API.dll"
-    String publishProject = "src/backend"
+    String publishProject = "src/backend/Dockerfile"
     String baseImage     = "mcr.microsoft.com/dotnet/sdk"
     String baseTag       = "6.0"
     String demoRegistry = "demotraining.azurecr.io"
@@ -21,7 +22,7 @@ void call() {
 //========================================================================
 
     stage ('Build Image') {
-        docker build --pull --rm -f "backend/Dockerfile" -t src:latest "backend"
+        docker.build ("--pull --rm -f ${name} -t src:latest ${tag}")
     }
 }
 
