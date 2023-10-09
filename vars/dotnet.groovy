@@ -8,7 +8,7 @@ void call() {
     String demoRegistry = "demotraining.azurecr.io"
     String checkBranches = "$env.BRANCH_NAME"
     String[] deployBranches = ['main', 'jenkins']
-    String sonarToken = "sonar-token"
+    String sonarToken = "sqa_3fc8a0c932f46bbe01fa53b8aebdfff550f414b8"
     String acrCredential = 'acr-demo-token'
     String k8sCredential = 'akstest'
     String namespace = "demo"
@@ -56,6 +56,17 @@ void call() {
         }
 
         cobertura coberturaReportFile: "results/*/*.xml"
+    }
+
+    stage('SonarQube analysis') {
+        script {
+            withSonarQubeEnv(credentialsId: sonarToken) {
+                withCredentials([string(credentialsId: sonarToken, variable: 'SONAR_TOKEN')]) {
+                    docker.build("demo/${name}-sonar:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile.SonarBuild \
+                    --build-arg BASEIMG=${baseImage} --build-arg IMG_VERSION=${baseTag} --build-arg SONAR_PROJECT=${name} --build-arg SONAR_TOKEN=${SONAR_TOKEN} ${WORKSPACE}") 
+                }
+            }
+        }
     }
 }
 
