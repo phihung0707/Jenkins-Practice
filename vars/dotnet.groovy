@@ -22,9 +22,7 @@ void call() {
 //========================================================================
 
     stage ("Build Solution") {
-        sh """
-            docker build --pull --rm -f "${publishProject}" --build-arg file_name="${name}" -t "${tag}"  .
-        """
+        dockerBuild.build("phihung0707/app:latest","backend")
     }
 }
 
