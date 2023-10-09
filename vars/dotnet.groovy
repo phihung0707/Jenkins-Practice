@@ -22,7 +22,7 @@ void call() {
 //========================================================================
 
     stage ('Build Image') {
-        docker.build ("--pull --rm -f ${name} -t src:latest ${tag}")
+        docker.build ("--pull --rm -f ${publishProject} -t src:latest ${tag}")
     }
 }
 
