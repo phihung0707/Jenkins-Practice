@@ -8,7 +8,7 @@ void call() {
     String demoRegistry = "demotraining.azurecr.io"
     String checkBranches = "$env.BRANCH_NAME"
     String[] deployBranches = ['main', 'jenkins']
-    String sonarToken = "sqa_3fc8a0c932f46bbe01fa53b8aebdfff550f414b8"
+    String sonarToken = "sqa_21419063f1248ad36f8055ffe2fc9d8cdf0f43d4"
     String acrCredential = 'acr-demo-token'
     String k8sCredential = 'akstest'
     String namespace = "demo"
