@@ -14,7 +14,7 @@ ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.do
 RUN dotnet sonarscanner begin \
   /k:$SONAR_PROJECT \
   /d:sonar.login=$SONAR_TOKEN \ 
-  /d:sonar.host.url=http://localhost:9000 \
+  /d:sonar.host.url=http://127.0.0.1:9000 \
   /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" \
   /d:sonar.qualitygate.wait=true \
   /d:sonar.qualitygate.timeout=900 \
