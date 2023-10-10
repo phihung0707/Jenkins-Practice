@@ -9,8 +9,8 @@ void call() {
     String checkBranches = "$env.BRANCH_NAME"
     String[] deployBranches = ['main', 'jenkins']
     String sonarToken = "sonarqube"
-    String host = 'http://localhost:9000'
-    String token = 'sqp_d39cd36f91111efb2be9a6a1390bfc1d2ddb9bc3'
+    String host = \\""http://localhost:9000\\""
+    String token = \\""sqp_d39cd36f91111efb2be9a6a1390bfc1d2ddb9bc3\\""
     String namespace = "test"
     String rununitTest = "dotnet test --no-build -l:trx -c Release -p:DOTNET_RUNTIME_IDENTIFIER=linux-x64 --collect:'XPlat Code Coverage' --verbosity minimal --results-directory ./results"
 
