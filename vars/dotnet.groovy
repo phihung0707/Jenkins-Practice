@@ -40,6 +40,7 @@ void call() {
         script {
             withSonarQubeEnv(credentialsId: sonarToken) {
                 withCredentials([string(credentialsId: sonarToken, variable: 'SONAR_TOKEN')]) {
+                    sh "dotnet tool install --global dotnet-sonarscanner"
                     sh "dotnet sonarscanner begin /k:${namespace} /d:sonar.host.url=${host}  /d:sonar.token=${token}" 
                 }
             }
