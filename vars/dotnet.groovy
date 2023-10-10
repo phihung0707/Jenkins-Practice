@@ -40,8 +40,7 @@ void call() {
         script {
             withSonarQubeEnv(credentialsId: sonarToken) {
                 withCredentials([string(credentialsId: sonarToken, variable: 'SONAR_TOKEN')]) {
-                    docker.build("demo/${name}-sonar:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile.SonarBuild \
-                    --build-arg BASEIMG=${baseImage} --build-arg IMG_VERSION=${baseTag} --build-arg SONAR_PROJECT=${name} --build-arg SONAR_TOKEN=${SONAR_TOKEN} ${WORKSPACE}") 
+                    sh "dotnet sonarscanner begin /k:"test" /d:sonar.host.url="http://localhost:9000"  /d:sonar.token="sqp_d39cd36f91111efb2be9a6a1390bfc1d2ddb9bc3"begin /k:"test" /" 
                 }
             }
         }
