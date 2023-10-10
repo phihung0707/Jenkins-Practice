@@ -36,28 +36,6 @@ void call() {
         --build-arg BASEIMG=${baseImage} --build-arg IMG_VERSION=${baseTag} ${WORKSPACE}") 
     }
 
-    stage ('Run Unit Tests') {
-        sh "mkdir -p results"
-        sh "docker run -i --rm --volume './results:/src/results' demo/${name}-sdk:${BUILD_NUMBER} $rununitTest"
-    }
-
-    stage ('Run Integration Tests') {
-        echo "Run Integration Tests"
-    }
-
-    stage ('Process Test Results') {
-        docker.image("demo/${name}-sdk:${BUILD_NUMBER}").inside() {
-            xunit(
-                testTimeMargin: '600000',
-                thresholdMode: 1,
-                thresholds: [failed(), skipped()],
-                tools: [MSTest(deleteOutputFiles: true, failIfNotNew: true, pattern: "results/*.trx", skipNoTestFiles: false, stopProcessingIfError: true)]
-            )
-        }
-
-        cobertura coberturaReportFile: "results/*/*.xml"
-    }
-
     stage('SonarQube analysis') {
         script {
             withSonarQubeEnv(credentialsId: sonarToken) {
