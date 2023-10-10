@@ -4,7 +4,7 @@ void call() {
     String runtime = "BookStore.API.dll"
     String publishProject = "src/BookStore.API/BookStore.API.csproj"
     String baseImage     = "mcr.microsoft.com/dotnet/sdk"
-    String baseTag       = "7.0.111"
+    String baseTag       = "7.0"
     String demoRegistry = "demotraining.azurecr.io"
     String checkBranches = "$env.BRANCH_NAME"
     String[] deployBranches = ['main', 'jenkins']
